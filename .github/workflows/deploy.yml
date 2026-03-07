@@ -27,12 +27,19 @@ jobs:
           cache: "npm"
 
       - name: Install
-        run: npm ci
+        run: npm install
 
       - name: Build
         run: npm run build
         env:
           BASE_PATH: /saurabh_portfolio
+          NODE_ENV: production
+
+      - name: Verify out directory
+        run: |
+          if [ ! -d out ]; then echo "::error::out directory missing after build"; exit 1; fi
+          ls -la out
+          find out -name "index.html" | head -5
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
