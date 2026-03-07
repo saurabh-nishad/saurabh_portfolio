@@ -2,10 +2,10 @@
 const basePath = process.env.BASE_PATH || "";
 const nextConfig = {
   output: "export",
-  basePath,
-  assetPrefix: basePath ? `${basePath}/` : "",
+  basePath: basePath,
+  assetPrefix: basePath ? basePath + "/" : "",
   trailingSlash: true,
-  images: { unoptimized: true },
+  images: { unoptimized: true }
 };
 
-export default nextConfig;
+module.exports = nextConfig;
