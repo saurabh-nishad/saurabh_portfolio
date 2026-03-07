@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0a0f0d;
+  --surface: #111a16;
+  --surface-hover: #1a2520;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent-green: #22c55e;
+  --accent-blue: #3b82f6;
+  --glow-green: rgba(34, 197, 94, 0.25);
+  --glow-blue: rgba(59, 130, 246, 0.2);
+  --border: rgba(34, 197, 94, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[var(--bg)] text-[var(--text)] antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, var(--glow-green), transparent 50%),
+    linear-gradient(to right, rgba(34, 197, 94, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(34, 197, 94, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 24px 24px, 24px 24px;
+}
+
+/* Circuit / waveform motif - subtle */
+.circuit-lines {
+  background-image:
+    linear-gradient(90deg, transparent 0%, rgba(34, 197, 94, 0.04) 50%, transparent 100%);
+  background-size: 200% 100%;
+}
+
+/* Section reveal animation */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Glow on focus for accessibility */
+a:focus-visible,
+button:focus-visible {
+  @apply outline-none ring-2 ring-accent-green ring-offset-2 ring-offset-[var(--bg)];
+}
+
+/* Selection */
+::selection {
+  @apply bg-accent-green/30 text-white;
+}
