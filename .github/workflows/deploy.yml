@@ -24,10 +24,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
       - name: Install
-        run: npm install
+        run: npm install --no-audit --no-fund
 
       - name: Build
         run: |
@@ -41,6 +40,7 @@ jobs:
           NODE_ENV: production
           NEXT_TELEMETRY_DISABLED: 1
           CI: true
+          NODE_OPTIONS: "--max-old-space-size=4096"
 
       - name: Debug if no out
         if: failure()
@@ -49,8 +49,16 @@ jobs:
           ls -la
           echo "--- .next if present ---"
           ls -la .next 2>/dev/null || true
-          echo "--- build.log tail ---"
-          tail -80 build.log 2>/dev/null || true
+          echo "--- build.log tail (last 100 lines) ---"
+          tail -100 build.log 2>/dev/null || true
+
+      - name: Upload build log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+          retention-days: 5
 
       - name: Verify out directory
         run: |
