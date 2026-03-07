@@ -30,12 +30,27 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: |
+          npm run build 2>&1 | tee build.log
+          EXIT=$?
+          echo "--- Full build log ---"
+          cat build.log
+          exit $EXIT
         env:
           BASE_PATH: /saurabh_portfolio
           NODE_ENV: production
           NEXT_TELEMETRY_DISABLED: 1
           CI: true
+
+      - name: Debug if no out
+        if: failure()
+        run: |
+          echo "--- Working directory contents ---"
+          ls -la
+          echo "--- .next if present ---"
+          ls -la .next 2>/dev/null || true
+          echo "--- build.log tail ---"
+          tail -80 build.log 2>/dev/null || true
 
       - name: Verify out directory
         run: |
