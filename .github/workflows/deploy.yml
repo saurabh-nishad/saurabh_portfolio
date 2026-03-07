@@ -36,11 +36,20 @@ jobs:
           cat build.log
           exit $EXIT
         env:
-          BASE_PATH: /saurabh_portfolio
+          BASE_PATH: ""
           NODE_ENV: production
           NEXT_TELEMETRY_DISABLED: 1
           CI: true
           NODE_OPTIONS: "--max-old-space-size=4096"
+
+      - name: Fix paths for GitHub Pages subpath
+        run: |
+          REPO_PATH="/saurabh_portfolio"
+          if [ -d out ]; then
+            find out -name "*.html" -exec sed -i "s|href=\"/_next/|href=\"${REPO_PATH}/_next/|g" {} \;
+            find out -name "*.html" -exec sed -i "s|src=\"/_next/|src=\"${REPO_PATH}/_next/|g" {} \;
+            find out -name "*.html" -exec sed -i "s|href=\"/resume|href=\"${REPO_PATH}/resume|g" {} \;
+          fi
 
       - name: Debug if no out
         if: failure()
