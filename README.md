@@ -2,7 +2,7 @@
 
 Premium single-page portfolio for Saurabh Nishad: Embedded Architect, IoT Product Developer, and Hardware-Firmware Innovator.
 
-**Live:** [GitHub Pages](https://saurabh-nishad.github.io/portfolio/) (after deployment)  
+**Live:** [saurabh-nishad.github.io/saurabh_portfolio](https://saurabh-nishad.github.io/saurabh_portfolio/)  
 **GitHub:** [github.com/saurabh-nishad](https://github.com/saurabh-nishad)
 
 ## Requirements
@@ -95,14 +95,13 @@ git push -u origin main
   - **https://saurabh-nishad.github.io/portfolio/**  
   (if the repo name is `portfolio`; otherwise use your repo name instead of `portfolio`).
 
-### If your repository name is not `portfolio`
+### If your repository name is not `portfolio` (or you see bare text, no CSS)
 
 - The site URL will be `https://<username>.github.io/<your-repo-name>/`.
-- Edit `.github/workflows/deploy.yml` and change the line:
-  - `BASE_PATH: /portfolio`  
-  to  
+- **BASE_PATH must match your repo name** or CSS/JS won’t load (you’ll see plain text only).
+- Edit `.github/workflows/deploy.yml` and set:
   - `BASE_PATH: /your-repo-name`  
-  so that links and assets load correctly.
+  (e.g. this repo uses `BASE_PATH: /saurabh_portfolio`). Then push and let the workflow run again.
 
 ## Resume
 
