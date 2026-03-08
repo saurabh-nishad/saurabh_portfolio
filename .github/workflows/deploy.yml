@@ -49,6 +49,7 @@ jobs:
             find out -name "*.html" -exec sed -i "s|href=\"/_next/|href=\"${REPO_PATH}/_next/|g" {} \;
             find out -name "*.html" -exec sed -i "s|src=\"/_next/|src=\"${REPO_PATH}/_next/|g" {} \;
             find out -name "*.html" -exec sed -i "s|href=\"/resume|href=\"${REPO_PATH}/resume|g" {} \;
+            find out -type f \( -name "*.html" -o -name "*.js" \) -exec sed -i "s|/background.png|${REPO_PATH}/background.png|g" {} \;
           fi
 
       - name: Debug if no out
