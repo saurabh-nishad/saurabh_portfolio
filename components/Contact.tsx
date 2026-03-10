@@ -6,6 +6,7 @@ const EMAIL = "saurbh.nishad@outlook.com";
 const PHONE = "9717680234";
 const LINKEDIN = "https://www.linkedin.com/in/saurabh-nishad";
 const GITHUB = "https://github.com/saurabh-nishad";
+const SITE_URL = "https://saurabh-nishad.github.io/saurabh_portfolio";
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
@@ -44,18 +45,25 @@ export default function Contact() {
       className="section-reveal py-20 px-4 sm:px-6 border-t border-[var(--border)]"
     >
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Contact</h2>
-        <p className="text-slate-400 mb-8">
-          For consulting, embedded architecture, product development, and technical training
-          inquiries.
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Contact</h2>
+        <p className="text-slate-400 mb-6">
+          I&apos;m open to meaningful conversations around:
         </p>
+        <ul className="text-slate-400 text-sm space-y-1 mb-8">
+          <li>• consulting and architecture advisory</li>
+          <li>• startup collaboration</li>
+          <li>• embedded and connected product development</li>
+          <li>• neurotechnology and wearable systems</li>
+          <li>• technical leadership opportunities</li>
+          <li>• investor-backed product creation</li>
+        </ul>
 
         <div className="flex flex-wrap gap-6 mb-10 text-slate-300">
           <a href={`mailto:${EMAIL}`} className="hover:text-accent-green transition-colors">
-            {EMAIL}
+            Email: {EMAIL}
           </a>
           <a href={`tel:${PHONE}`} className="hover:text-accent-green transition-colors">
-            {PHONE}
+            Phone: {PHONE}
           </a>
           <a
             href={LINKEDIN}
@@ -71,7 +79,7 @@ export default function Contact() {
             rel="noopener noreferrer"
             className="hover:text-accent-green transition-colors"
           >
-            GitHub
+            GitHub / Portfolio
           </a>
           <a
             href="/resume.pdf"
@@ -122,10 +130,12 @@ export default function Contact() {
               name="inquiry"
               className="w-full px-4 py-2.5 rounded-lg bg-surface-800 border border-[var(--border)] text-white focus:outline-none focus:ring-2 focus:ring-accent-green focus:border-transparent"
             >
-              <option value="consulting">Consulting</option>
-              <option value="embedded-architecture">Embedded architecture</option>
-              <option value="product-development">Product development</option>
-              <option value="technical-training">Technical training</option>
+              <option value="consulting">Consulting / Architecture advisory</option>
+              <option value="startup-collab">Startup collaboration</option>
+              <option value="product-dev">Embedded / connected product development</option>
+              <option value="neurotech-wearables">Neurotech and wearable systems</option>
+              <option value="leadership">Technical leadership opportunities</option>
+              <option value="investor-partnership">Investor / partnership inquiry</option>
             </select>
           </div>
           <div>
@@ -154,7 +164,10 @@ export default function Contact() {
           <a href={`mailto:${EMAIL}`} className="text-accent-green hover:underline">
             {EMAIL}
           </a>{" "}
-          or call {PHONE}.
+          or call {PHONE}. Portfolio:{" "}
+          <a href={SITE_URL} target="_blank" rel="noopener noreferrer" className="text-accent-green hover:underline">
+            {SITE_URL}
+          </a>
         </p>
       </div>
     </section>

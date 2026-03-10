@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 
 const LINKS = [
   { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
+  { label: "What I Build", href: "#what-i-build" },
+  { label: "Impact", href: "#impact" },
   { label: "Projects", href: "#projects" },
-  { label: "Achievements", href: "#achievements" },
-  { label: "Skills", href: "#skills" },
-  { label: "Speaking", href: "#speaking" },
-  { label: "Education", href: "#education" },
+  { label: "Experience", href: "#experience" },
+  { label: "Capabilities", href: "#skills" },
+  { label: "Publications", href: "#publications" },
+  { label: "Who I Work With", href: "#who-i-work-with" },
+  { label: "Open To", href: "#open-to" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Contact", href: "#contact" },
 ];
@@ -43,7 +45,7 @@ export default function Nav() {
         </a>
 
         {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-6">
+        <ul className="hidden lg:flex items-center gap-4 flex-wrap justify-end">
           {LINKS.map(({ label, href }) => (
             <li key={href}>
               <a
@@ -59,7 +61,7 @@ export default function Nav() {
         {/* Mobile menu button */}
         <button
           type="button"
-          className="md:hidden p-2 text-slate-300 hover:text-white rounded"
+          className="lg:hidden p-2 text-slate-300 hover:text-white rounded"
           aria-expanded={mobileOpen}
           aria-controls="mobile-menu"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -78,11 +80,11 @@ export default function Nav() {
       {/* Mobile menu */}
       <div
         id="mobile-menu"
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          mobileOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${
+          mobileOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <ul className="px-4 py-4 space-y-2 bg-surface-900/98 border-t border-[var(--border)]">
+        <ul className="px-4 py-4 space-y-2 bg-surface-900/98 border-t border-[var(--border)] max-h-[70vh] overflow-y-auto">
           {LINKS.map(({ label, href }) => (
             <li key={href}>
               <a

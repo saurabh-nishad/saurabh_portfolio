@@ -2,15 +2,12 @@
 
 import { useEffect, useRef } from "react";
 
-const EXPERTISE = [
-  "Embedded architecture",
-  "IoT systems",
-  "Product development",
-  "Firmware engineering",
-  "Embedded hardware design",
-  "Wireless and cloud connectivity",
-  "Edge AI and signal-processing based devices",
-  "Technical training and customer enablement",
+const AREAS = [
+  "Neurotechnology and wearable systems",
+  "Industrial IoT and connected hardware",
+  "Automotive and smart access systems",
+  "AI-enabled edge devices",
+  "Consumer electronics and smart sensing products",
 ];
 
 export default function About() {
@@ -36,29 +33,28 @@ export default function About() {
       className="section-reveal py-20 px-4 sm:px-6 border-t border-[var(--border)]"
     >
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">About</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">About Me</h2>
         <p className="text-slate-400 leading-relaxed mb-6">
-          With over nine years of experience, I have worked with semiconductor companies, startups,
-          and product teams to deliver embedded and IoT solutions from concept to production. I bring
-          strong expertise across embedded architecture, IoT systems, product development, firmware
-          engineering, and hardware design—as well as wireless and cloud connectivity, edge AI, and
-          technical training.
+          I am an embedded systems and product architecture leader focused on building real-world deep-tech products.
+        </p>
+        <p className="text-slate-400 leading-relaxed mb-6">
+          Over the last 9+ years, I have worked across semiconductor companies, startups, and product teams to turn complex engineering challenges into deployable systems. My work spans electronics architecture, embedded firmware, low-power design, wireless protocols, cloud connectivity, embedded Linux, RTOS-based systems, sensor integration, and product validation.
         </p>
         <p className="text-slate-400 leading-relaxed mb-8">
-          I have operated in both individual contributor and leadership roles—driving reference
-          design development, customer support, architecture definition, prototype validation, and
-          product innovation for industrial, automotive, wearable, and medical-adjacent systems.
+          What makes my approach different is that I do not treat hardware, firmware, connectivity, and product strategy as separate silos. I help define the entire product stack — from core architecture and integration choices to performance, reliability, manufacturing readiness, and long-term scalability.
         </p>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-300">
-          {EXPERTISE.map((item) => (
+        <p className="text-slate-300 font-medium mb-3">I have contributed to products and platforms across:</p>
+        <ul className="space-y-2 text-slate-400">
+          {AREAS.map((item) => (
             <li key={item} className="flex items-center gap-2">
-              <span className="text-accent-green" aria-hidden="true">
-                —
-              </span>
+              <span className="text-accent-green" aria-hidden="true">—</span>
               {item}
             </li>
           ))}
         </ul>
+        <p className="text-slate-400 leading-relaxed mt-8">
+          I am most valuable where the problem is technically demanding, cross-disciplinary, and commercially important.
+        </p>
       </div>
     </section>
   );
