@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, FormEvent } from "react";
+import { withBasePath } from "@/lib/basePath";
 
 const EMAIL = "saurbh.nishad@outlook.com";
 const PHONE = "9717680234";
@@ -82,7 +83,7 @@ export default function Contact() {
             GitHub / Portfolio
           </a>
           <a
-            href="/resume.pdf"
+            href={withBasePath("/resume.pdf")}
             download
             className="hover:text-accent-green transition-colors"
           >

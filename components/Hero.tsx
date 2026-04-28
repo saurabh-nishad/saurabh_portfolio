@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { withBasePath } from "@/lib/basePath";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/saurabh-nishad";
 const GITHUB_URL = "https://github.com/saurabh-nishad";
@@ -63,7 +64,7 @@ export default function Hero() {
             Investor / Collaboration Inquiry
           </a>
           <a
-            href="/resume.pdf"
+            href={withBasePath("/resume.pdf")}
             download
             className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-[var(--border)] text-slate-300 hover:bg-surface-700 hover:text-white hover:border-accent-green/40 transition-colors"
           >
@@ -92,7 +93,7 @@ export default function Hero() {
       <div className="flex-1 flex items-center justify-center">
         <div
           className="w-full max-w-4xl md:max-w-6xl aspect-square rounded-2xl bg-cover bg-center bg-no-repeat shadow-2xl shadow-black/30"
-          style={{ backgroundImage: "url(/background.png)" }}
+          style={{ backgroundImage: `url(${withBasePath("/background.png")})` }}
           role="img"
           aria-label="Hero visual"
         />
