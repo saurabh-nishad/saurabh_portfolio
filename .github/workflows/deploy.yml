@@ -36,21 +36,11 @@ jobs:
           cat build.log
           exit $EXIT
         env:
-          BASE_PATH: ""
+          BASE_PATH: /${{ github.event.repository.name }}
           NODE_ENV: production
           NEXT_TELEMETRY_DISABLED: 1
           CI: true
           NODE_OPTIONS: "--max-old-space-size=4096"
-
-      - name: Fix paths for GitHub Pages subpath
-        run: |
-          REPO_PATH="/saurabh_portfolio"
-          if [ -d out ]; then
-            find out -name "*.html" -exec sed -i "s|href=\"/_next/|href=\"${REPO_PATH}/_next/|g" {} \;
-            find out -name "*.html" -exec sed -i "s|src=\"/_next/|src=\"${REPO_PATH}/_next/|g" {} \;
-            find out -name "*.html" -exec sed -i "s|href=\"/resume|href=\"${REPO_PATH}/resume|g" {} \;
-            find out -type f \( -name "*.html" -o -name "*.js" \) -exec sed -i "s|/background.png|${REPO_PATH}/background.png|g" {} \;
-          fi
 
       - name: Debug if no out
         if: failure()
@@ -78,6 +68,10 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        with:
+          static_site_generator: next
+          token: ${{ secrets.PAGES_DEPLOY_TOKEN || github.token }}
+          enablement: ${{ secrets.PAGES_DEPLOY_TOKEN != '' }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

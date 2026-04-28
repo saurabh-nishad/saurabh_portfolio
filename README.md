@@ -84,6 +84,13 @@ git push -u origin main
 4. Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”).
 5. Save if needed. You don’t need to create a workflow yourself; the repo already has `.github/workflows/deploy.yml`.
 
+Alternative for the first deployment: add a repository secret named `PAGES_DEPLOY_TOKEN` and the workflow can try to enable Pages automatically.
+
+- Create a Personal Access Token or fine-grained token with repository administration/pages write access.
+- In GitHub, open **Settings** → **Secrets and variables** → **Actions** → **New repository secret**.
+- Name it `PAGES_DEPLOY_TOKEN`.
+- If this secret is not present, you must enable Pages manually in **Settings** → **Pages** before the workflow can pass the `actions/configure-pages` step.
+
 ### Step 5: Run the deployment
 
 - Every push to the `main` branch will build and deploy the site.
@@ -99,9 +106,7 @@ git push -u origin main
 
 - The site URL will be `https://<username>.github.io/<your-repo-name>/`.
 - **BASE_PATH must match your repo name** or CSS/JS won’t load (you’ll see plain text only).
-- Edit `.github/workflows/deploy.yml` and set:
-  - `BASE_PATH: /your-repo-name`  
-  (e.g. this repo uses `BASE_PATH: /saurabh_portfolio`). Then push and let the workflow run again.
+- This workflow now derives `BASE_PATH` automatically from the GitHub repository name, so you usually do not need to edit it manually.
 
 ## Resume
 
