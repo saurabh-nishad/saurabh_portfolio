@@ -64,16 +64,16 @@ git commit -m "Initial commit: portfolio site"
 # Add your GitHub repo as remote (use your repo URL)
 git remote add origin https://github.com/saurabh-nishad/portfolio.git
 
-# Push (use main or master depending on your default branch)
-git branch -M main
-git push -u origin main
+# Push (this repo uses master as the default branch)
+git branch -M master
+git push -u origin master
 ```
 
 If you already have a git repo and only need to add the remote:
 
 ```bash
 git remote add origin https://github.com/saurabh-nishad/portfolio.git
-git push -u origin main
+git push -u origin master
 ```
 
 ### Step 4: Turn on GitHub Pages
@@ -93,7 +93,7 @@ Alternative for the first deployment: add a repository secret named `PAGES_DEPLO
 
 ### Step 5: Run the deployment
 
-- Every push to the `main` branch will build and deploy the site.
+- Every push to the `master` branch will build and deploy the site.
 - You can also trigger it once: go to the **Actions** tab → select **Deploy to GitHub Pages** → **Run workflow** → **Run workflow**.
 
 ### Step 6: Open your site
